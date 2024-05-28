@@ -1,5 +1,6 @@
 import pandas as pd
-from data.raw import EDA, MAIN
+from data.raw import EDA 
+from data.raw import MAIN
 
 # Print the DataFrames to verify import
 
