@@ -1,4 +1,4 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 from code.EDAraw import EDA
 
@@ -97,24 +97,24 @@ def process_EDA():
         ))
 
     # Visualization of tax contributions and revenues
-    fig, ax = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
 
     # Plot Philadelphia tax revenues
-    ax[0].plot(df['Year'], df['PHL_Business_Priv'], label='Business Privilege', marker='o')
-    ax[0].plot(df['Year'], df['PHL_Wage_and_Earnings'], label='Wage and Earnings', marker='o')
-    ax[0].plot(df['Year'], df['PHL_Sales_and_Use'], label='Sales and Use', marker='o')
-    ax[0].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
-    ax[0].set_title('Philadelphia Tax Revenues by Year')
-    ax[0].set_ylabel('Revenue ($)')
-    ax[0].legend()
+    axes[0].plot(df['Year'], df['PHL_Business_Priv'], label='Business Privilege', marker='o')
+    axes[0].plot(df['Year'], df['PHL_Wage_and_Earnings'], label='Wage and Earnings', marker='o')
+    axes[0].plot(df['Year'], df['PHL_Sales_and_Use'], label='Sales and Use', marker='o')
+    axes[0].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
+    axes[0].set_title('Philadelphia Tax Revenues by Year')
+    axes[0].set_ylabel('Revenue ($)')
+    axes[0].legend()
 
     # Plot 76ers tax contributions
-    ax[1].plot(df['Year'], df['76ers_Total_Revenue_Per_Year'], label='Total 76ers Tax Contributions', color='green', marker='o')
-    ax[1].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
-    ax[1].set_title('76ers Tax Contributions by Year')
-    ax[1].set_xlabel('Year')
-    ax[1].set_ylabel('Contributions ($)')
-    ax[1].legend()
+    axes[1].plot(df['Year'], df['76ers_Total_Revenue_Per_Year'], label='Total 76ers Tax Contributions', color='green', marker='o')
+    axes[1].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
+    axes[1].set_title('76ers Tax Contributions by Year')
+    axes[1].set_xlabel('Year')
+    axes[1].set_ylabel('Contributions ($)')
+    axes[1].legend()
 
     plt.tight_layout()
     plt.show()
