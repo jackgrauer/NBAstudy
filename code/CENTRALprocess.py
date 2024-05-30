@@ -456,7 +456,7 @@ def process_CENTRAL():
     p_values_wage = 2 * (1 - norm.cdf(np.abs(z_scores_wage)))
 
     # Print p-values
-    print("\nP-values for hypothesis testing of Sales Tax Residuals:\n", p)
+    print("\nP-values for hypothesis testing of Sales Tax Residuals:\n", p_values_sales)
     print("\nP-values for hypothesis testing of Wage Tax Residuals:\n", p_values_wage)
 
     return df
