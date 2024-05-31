@@ -56,19 +56,33 @@ def process_EDA():
     ]
     df[tax_contribution_columns] = df[tax_contribution_columns].clip(lower=0)
 
-    # Print yearly tax contributions from the 76ers
+ # Print yearly tax contributions from the 76ers
     print("Yearly Tax Contributions from the 76ers (No Negative Contributions):\n")
-    headers = ["Year", "Amusement Tax", "BIRT Gross Receipts", "BIRT Net Income",
-               "Wage Tax Resident", "Wage Tax Non-Resident", "Sales Tax",
-               "Net Profits Tax", "PILOT", "Total Revenue"]
-    header_format = "{:<6} " + "{:<20} " * (len(headers) - 1)
-    row_format = "{:<6} $" + "${:<18,d} " * 8
 
-    print(header_format.format(*headers))
+    # Define headers with each word on a new line to fit vertically
+    headers = [
+        "Year", "Amusement\nTax", "BIRT\nGross\nReceipts", "BIRT\nNet\nIncome",
+        "Wage\nTax\nResident", "Wage\nTax\nNon-Res.", "Sales\nTax",
+        "Net\nProfits\nTax", "PILOT", "Total\nRevenue"
+    ]
 
+    # Adjust column widths to accommodate vertical headers
+    header_format = "| {:<4} | {:<9} | {:<12} | {:<12} | {:<11} | {:<14} | {:<9} | {:<14} | {:<5} | {:<13} |"
+    row_format = "| {:<4} | {:<9} | {:<12} | {:<12} | {:<11} | {:<14} | {:<9} | {:<14} | {:<5} | {:<13} |"
+
+    # Print headers
+    for i in range(max(map(lambda x: x.count("\n"), headers)) + 1):
+        print("| {:<4} | {:<9} | {:<12} | {:<12} | {:<11} | {:<14} | {:<9} | {:<14} | {:<5} | {:<13} |".format(
+            *[header.split("\n")[i] if len(header.split("\n")) > i else "" for header in headers]
+        ))
+
+    # Print divider
+    print("-" * 129)
+
+    # Print data rows
     for index, row in df.iterrows():
         print(row_format.format(
-            row['Year'],
+            int(row['Year']),
             int(row['76ers_Amusement_Tax_Contribution']),
             int(row['76ers_BIRT_Gross_Receipts_Contribution']),
             int(row['76ers_BIRT_Net_Income_Contribution']),
@@ -79,22 +93,34 @@ def process_EDA():
             int(row['76ers_PILOT']),
             int(row['76ers_Total_Revenue_Per_Year'])
         ))
+        print("-" * 129)
+
+
+
+
+
+
+
 
     # Print Philadelphia tax revenues by year
     print("Philadelphia Tax Revenues By Year:\n")
     headers = ["Year", "Business Privilege", "Wage and Earnings", "Sales and Use"]
-    header_format = "{:<6} " + "{:<20} " * (len(headers) - 1)
-    row_format = "{:<6} $" + "${:<18,d} " * 3
+    header_format = "| {:<6} | {:<20} | {:<20} | {:<20} |"
+    row_format = "| {:<6} | {:<20} | {:<20} | {:<20} |"
 
     print(header_format.format(*headers))
+    print("-" * 75)
 
     for index, row in df.iterrows():
         print(row_format.format(
-            row['Year'],
+            int(row['Year']),
             int(row['PHL_Business_Priv']),
             int(row['PHL_Wage_and_Earnings']),
             int(row['PHL_Sales_and_Use'])
         ))
+        print("-" * 75)
+
+
 
     # Visualization of tax contributions and revenues
     fig, axes = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
