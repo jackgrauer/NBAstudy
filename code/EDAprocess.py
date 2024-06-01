@@ -1,10 +1,11 @@
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
 from code.EDAraw import EDA
 
 def process_EDA():
-    # Initialize DataFrame with provided data
     df = pd.DataFrame(EDA)
+
+
     
     # Ensure all necessary columns exist in the DataFrame
     required_columns = [

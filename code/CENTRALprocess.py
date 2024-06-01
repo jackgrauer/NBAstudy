@@ -19,11 +19,15 @@ import warnings
 import patsy
 import pingouin as pg
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 from code.CENTRALraw import CENTRAL
+
 
 def process_CENTRAL():
     df = pd.DataFrame(CENTRAL)
-    CENTRAL_list_combined = []
+
 
     # Step 8: Define functions to determine NBArev presence, wage tax presence, sales tax presence, and add NBA revenue flag
     def set_group_presence(CENTRAL):
@@ -301,7 +305,7 @@ def process_CENTRAL():
     print(f"T-statistic (Wage Tax): {t_statistic_wage}")
     print(f"P-value (Wage Tax): {p_value_wage}")
 
-    # Step 17: Multivariate DID with WLS
+    # Step 17: Multivariate DID setup
 
     # Prepare the data for the combined sales and wage tax DiD analysis (2016 intervention year)
     years_analysis = [year for year in years if year <= 2016]
@@ -330,7 +334,7 @@ def process_CENTRAL():
     # Drop rows where both SalesTax and WageTax are NaN
     combined_tax_did_df = combined_tax_did_df.dropna(subset=['SalesTax', 'WageTax'], how='all')
 
-    # Separate data for SalesTax and WageTax for WLS modeling
+    # Separate data for SalesTax and WageTax for modeling
     combined_tax_did_df_sales = combined_tax_did_df.dropna(subset=['SalesTax'])
     combined_tax_did_df_wage = combined_tax_did_df.dropna(subset=['WageTax'])
 
@@ -355,6 +359,12 @@ def process_CENTRAL():
 
     print("Wage Tax Model Summary with WLS and 2016 Intervention Year")
     print(wage_tax_model_wls.summary())
+
+
+
+
+
+
 
     # Step 18: Diagnostics. Multicollinearity, Normality, and Heteroscedasticity Check for Both Models
 
