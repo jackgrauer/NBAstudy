@@ -1,4 +1,3 @@
--
 Does NBA Revenue Matter to Local Governments? 
 
 Abstract: This study tested the relationship between wage tax revenue in mid-sized U.S. cities like Philadelphia that host professional basketball teams, and NBA revenue fluctuations. Results indicate NBA revenue increases do not spill over to tax revenue gains in Philadelphia, and NBA player payrolls do not significantly impact city wage tax in the cities observed.
@@ -63,23 +62,30 @@ In the exploratory phase of this study, we estimated the 76ers’ total tax cont
 
 We listed known taxes through which local government receives revenue from NBA operations: amusement, business, net profits, wage, and sales taxes. Spectrum makes a $2 million annual Payment in Lieu of Taxes in place of property tax to Philadelphia. 
 
-We used annual Philadelphia tax rate data to estimate how much the 76ers owed in each of these taxes to produce annual estimates of what the 76ers owed per year in all appropriate taxes between 2001 and 2022. We excluded gate receipts data because it was missing for some years. Given Zimbalist’s estimate that 1/3 of NBA players live in the cities that host their teams, we estimated that Philadelphia charged 1/3 of 76ers resident wage tax rate and non-resident wage rate to the rest. 
+Annual Philadelphia tax rate data was used to estimate how much the 76ers owed in each of these tax categories between 2001 and 2022. We excluded gate receipts data because it was missing for some years. Given Zimbalist’s estimate that 1/3 of NBA players live in the cities that host their teams, we estimated that Philadelphia charged 1/3 of 76ers resident wage tax rate and non-resident wage rate to the rest. 
 
 Fig. 1 graphically compared the sum of all estimated 76ers tax contributions to tax revenue collected through Philadelphia’s three largest tax revenue streams: business privilege, wage and Earnings, and sales and use. 
 
 Visual assessment of Philadelphia’s three major tax revenue streams over 20 years showed no obvious fluctuations other than a pandemic-adjacent dip in wage tax revenue. 76ers tax contributions to Philadelphia remained mostly static until 2015 and showed a subsequent upward turn, temporarily stifled by the pandemic, picking up afterward. 
 
-The influx coincided with the termination of a collective bargaining contract between NBAs and team management, which raised the soft salary cap for NBA players 35%: another historically significant amount. These events coincided with an 81% rise in NBA free agent player salaries during 2016 (Keefer 2021, p. 3475). 
+The 2015 revnue influx coincided with the termination of a collective bargaining contract between NBAs and team management, which raised the soft salary cap for NBA players 35%: another historically significant amount. These events coincided with an 81% rise in NBA free agent player salaries during 2016 (Keefer 2021, p. 3475). 
 
-Keefer studied these events' correlations with NBA finances from a business management perspective to observed interplay between player pay increases and on-court performance. From a public administration perspective, the financial boons the NBA experienced that that year would also serve as a natural experiment by which to test the relationship between professional basketball teams’ finances and those of the cities in which they operate. 
+Keefer studied these events' correlations with NBA finances from a business management perspective to observed interplay between player pay increases and on-court performance. From a public administration perspective, the financial boons the NBA experienced that that year would also serve as a natural experiment by which to test the relationship between professional basketball teams’ finances and those of the cities in which they operate. We predicted that NBA financial gains would not translate to local tax revenue gains across multiple US cities with NBA teams. 
 
-We predicted that NBA financial gains would not translate to local tax revenue gains across multiple US cities with NBA teams. City wage and sales tax revenue data came from each respective city’s consolidated annual financial reports. The dataset included annual observations from 2001 to 2022 to the observation period of the Forbes data on NBA financials.
+City wage and sales tax revenue data came from each respective city’s consolidated annual financial reports. The dataset included annual observations from 2001 to 2022 from the Forbes data on NBA financials.
 
 Annual city population estimates came from the US Census Bureau’s Current Population Survey. Inflation data came from the Federal Reserve Bank of St. Louis’s API. We excluded large population centers like New York, Los Angeles, and Chicago. The size of the overall tax revenue streams in the largest US cities overshadowed the impact of tax contributions from an entity the size of an NBA team. We also eliminated Oklahoma City due to a team relocation during the observation period. 
 
-The data was smoothed to mitigate the pandemic's effect on NBA and government data by using averages from the closest unaffected years before and after 2020 and 2021. We normalized figures on an annual, per capita basis to control population differences between cities and fluctuations between years. These values were additionally adjusted for inflation using the Consumer Price Index (CPI), indexed to the base year 2020. 
+The dataset included annual population, local wage tax revenue, NBA player payrolls, and macroeconomic measures for each city between 2001 and 2022. We grouped 17 cities by presence or absence of a wage tax system, sales tax system, and an NBA team. The presence or absence of data in these fields determined each city’s role as a treatment or a control group in each test. We excluded the largest US population centers like New York and Chicago. The size difference between those large municipal governments’ tax revenue bases and their NBA teams made it almost impossible to observe the effect for which we were looking.
 
-The dataset of the larger study included yearly population, local wage tax revenue, NBA player payrolls, and macroeconomic measures for each city between 2001 and 2022. We grouped 17 cities by presence or absence of a wage tax system, sales tax system, and an NBA team. The presence or absence of data in these fields determined each city’s role as a treatment or a control group in each test. We excluded the largest US population centers to give the NBA the benefit of the doubt in terms of observable impact. The magnitude of difference between those governments’ tax revenue bases and their NBA teams were too large to exert the effect we wanted to observe...
+Data pre-processing consisted of five steps. To create control and treatment groups, we flagged cities by the presence or absence of wage and sales tax systems and the presence or absence of NBA franchises. This enabled us to test for a difference in tax revenue increases in cities during 2016 that host NBA teams versus non-NBA teams hosting cities. To control for COVID 19's effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to their values in 2020 dollars with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by years, we normalized financial data on an annual, per capita basis.
+
+In the next phase, we conducted a simple Origin of Least Squares (OLS)
+
+
+
+
+
 
 # GPT NEEDED 
 
@@ -110,6 +116,8 @@ Heterogeneity Among Cities: The economic influence of NBA teams might vary signi
 Further research would benefit from better access to primary source financial documents and would include more granular monthly data. It would also benefit from data on all types of taxes cities exact from the NBA in addition to wage tax, such as net profits and sales tax.   
 
 Philadelphia has denied most requests for public access to transaction records between Wells Fargo Center and the city with information in question in this study, among many others related to the stadium proposal (Althouse). Without access to documents needed to directly assess the predictions, this study relied on annual, city-level financial data. Accounting conventions varied between cities; fiscal years begin and end in different months. An analysis of monthly data would further articulate the nuances of the 2016 intervention and improve control of actuarial variances. 
+
+##insert thing about how we're talking about what the EDAF may have owed, not what they actually paid, since we're not looking at primary source documentation.
 
 CONCLUSION 
 
