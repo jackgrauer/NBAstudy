@@ -79,18 +79,35 @@ To test whether a difference-in-difference (DID) analysis would work in this sce
 
 Diagnostics on the preliminary OLS regression also guided model selection. Heteroscedascity and non-normality warnings, both common in panel data analyses, informed the decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors. 
 
-We set up a multivariate regression that ran two models. The first model assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. 
+We set up a multivariate regression that ran two models. The first model assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. The combined models can be described like this:
+
+Wage Tax Model:
+
+$$\(\text{WageTax}_{it} = \beta_{0,1} + \beta_{1,1} \text{NBA Team}_i + \beta_{2,1} \text{Post-2016}_t + \beta_{3,1} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,1}\)
+
+Sales Tax Model:
+
+$$\text{SalesTax}_{it} = \beta_{0,2} + \beta_{1,2} \text{NBA Team}_i + \beta_{2,2} \text{Post-2016}_t + \beta_{3,2} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,2}$$
+
+Where:
+
+$\text{WageTax}_{it}$ represents the wage tax revenue in given city $i$ at time $t$.
+$\text{SalesTax}_{it}$ represents the sales tax revenue in given city $i$ at time $t$.
+$\beta_{0,1}$ and $\beta_{0,2}$ are the intercepts for the wage tax and sales tax models.
+$\beta_{1,1}$ and $\beta_{1,2}$ are the coefficients for the presence of an NBA team in the wage tax and sales tax models.
+$\beta_{2,1}$ and $\beta_{2,2}$ are the coefficients for the post-2016 period in the wage tax and sales tax models.
+$\beta_{3,1}$ and $\beta_{3,2}$ are the interaction terms capturing the effect of the 2016 media deal on cities with NBA teams for the wage tax and sales tax models.
+$\epsilon_{it,1}$ and $\epsilon_{it,2}$ are the error terms for the wage tax and sales tax models.
 
 The first model designated cities with an NBA team and a sales tax system as the treatment group. Cities with no NBA and a sales tax as a control group. The second model was the similar, except treatment and control groups were defined based on the presence or absence of a wage tax system rather, not a sales tax system. This configuration enabled us to assess whether cities with NBA teams saw sales tax revenue increases in tandem with the major revenue increases the NBA experienced in 2016.
 
-In both models, we represented the 2016 intervention with the variable ‘Post-2016,’ dividing the data into two time periods: before the 2016 intervention and after it. With this term, we hoped to capture the potential differences in tax revenue impacts in cities with NBA teams before and after the 2016 media deal. The interaction term ‘NBA Team * Post-2016’ isolated the effect of the media deal, capturing any potential difference of impact on cities with and without NBA teams.
+In both models, we represented the 2016 intervention with the variable ‘Post-2016,’ which divided observations by whether they were made before the 2016 intervention and after it. This term captured differences in tax revenue impacts in cities with NBA teams before and after the 2016 media deal. The interaction term ‘NBA Team * Post-2016’ isolated the effect of the media deal to any potential difference of impact on cities with and without NBA teams.
 
- which grouped the data by years before the NBA media deal and years after. "Post-2016" isolated the interaction between NBA team presence and the years after the introduction our treatment: the 2016 media deal.
-
+Given the early diagnostic warnings the preliminary data analysis produced, we performed several post-modelling tests to assess the severity of multicollinearity, and heteroscedascity in the WLS models. To test whether non-normality of data threatened the strength of our hypotheses, we re-tested them with stationary bootstrapping.
 
 ## RESULTS 
 
-
+The exploratory section of this study compared tax revenue collected by the City of Philadelphia and informed estimates of what the 76ers and their property management company owed Philadelphia in taxes from 2001 to 2002. On Philadelphia's side, we identified the three line items to which the 76ers' operation co`ntributed: Business Privelige, Wage and Earnings, and Sales and Use Taxes. On the 76ers' side, we identified the available financial metrics 
 
 ## LIMITATIONS 
 
@@ -100,7 +117,7 @@ Indirect and Induced Impacts: The presence of NBA teams can also indirectly boos
 
 Enhanced City Visibility and Branding: Hosting an NBA team puts cities on a national or even international stage, potentially attracting more tourists, business investments, and enhancing the city's brand as a vibrant, lively place to visit or live. 
 
-Limitations of the Proxy: 
+## Limitations of the Proxy: 
 
 Oversimplification of Economic Contributions: While the presence of an NBA team is indicative of certain types of economic activities, it might oversimplify or overlook other economic dynamics. For instance, the actual economic impact of an NBA team can be far less than expected if most of the money spent on and around game days comes from local residents (substitution effect), meaning it merely redistributes money that might have been spent on other local entertainment options. 
 
