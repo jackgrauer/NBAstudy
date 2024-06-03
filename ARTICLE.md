@@ -176,31 +176,37 @@ Diagnostics on the preliminary OLS regression also guided model selection. Heter
 
 We set up a multivariate regression that ran two models. The first model assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. 
 
-    \documentclass{article}
-    \usepackage{amsmath}
-    \begin{document}
+\documentclass{article}
+\usepackage{amsmath}
 
-    \section*{Wage Tax Model}\[\text{WageTax}_{it} = \beta_{0,1} + \beta_{1,1} \text{NBA Team}_i +         \beta_{2,1}\text{Post-2016}_t + \beta_{3,1 (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,1}\]
+\begin{document}
 
-    \section*{Sales Tax Model}\[\text{SalesTax}_{it} = \beta_{0,2} + \beta_{1,2} \text{NBA Team}_i +   \beta_{2,2}\text{Post-2016}_t + \beta_{3,2} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,2}\]
+\section*{Wage Tax Model}
 
-    \section*{Where:}
-    \begin{itemize}
-    
-    \item $\text{WageTax}_{it}$ represents the wage tax revenue in given city $i$ at time $t$.
-    
-    \item $\text{SalesTax}_{it}$ represents the sales tax revenue in given city $i$ at time $t$.
-    
+\[
+\text{WageTax}_{it} = \beta_{0,1} + \beta_{1,1} \text{NBA Team}_i + \beta_{2,1} \text{Post-2016}_t + \beta_{3,1} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,1}
+\]
+
+\section*{Sales Tax Model}
+
+\[
+\text{SalesTax}_{it} = \beta_{0,2} + \beta_{1,2} \text{NBA Team}_i + \beta_{2,2} \text{Post-2016}_t + \beta_{3,2} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,2}
+\]
+
+\section*{Where:}
+
+\begin{itemize}
+    \item $\text{WageTax}_{it}$ represents the wage tax revenue in a given city $i$ at time $t$.
+    \item $\text{SalesTax}_{it}$ represents the sales tax revenue in a given city $i$ at time $t$.
     \item $\beta_{0,1}$ and $\beta_{0,2}$ are the intercepts for the wage tax and sales tax models.
-    
-    \item $\beta_{1,1}$ and $\beta_{1,2}$ are the coefficients for the presence of an NBA team in the wage tax and         sales tax models.
-    
-    \item $\beta_{2,1}$ and $\beta_{2,2}$ are the coefficients for the post-2016 period in the wage tax and sales tax      models.
-    
-    \item $\beta_{3,1}$ and $\beta_{3,2}$ are the interaction terms capturing the effect of the 2016 media deal on         cities with NBA teams for the wage tax and sales tax models.
+    \item $\beta_{1,1}$ and $\beta_{1,2}$ are the coefficients for the presence of an NBA team in the wage tax and sales tax models.
+    \item $\beta_{2,1}$ and $\beta_{2,2}$ are the coefficients for the post-2016 period in the wage tax and sales tax models.
+    \item $\beta_{3,1}$ and $\beta_{3,2}$ are the interaction terms capturing the effect of the 2016 media deal on cities with NBA teams for the wage tax and sales tax models.
     \item $\epsilon_{it,1}$ and $\epsilon_{it,2}$ are the error terms for the wage tax and sales tax models.
-    \end{itemize}
-    \end{document}
+\end{itemize}
+
+\end{document}
+
 
 The first model designated cities with an NBA team and a sales tax system as the treatment group. Cities with no NBA and a sales tax were designated as the control group. The second model the similar, except treatment and control groups were defined based on the presence or absence of a wage tax system. This configuration enabled us to assess whether cities with NBA teams saw sales tax revenue increases in tandem with the major revenue increases the NBA experienced in 2016.
 
