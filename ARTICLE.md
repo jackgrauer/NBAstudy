@@ -178,15 +178,15 @@ We set up a multivariate regression that ran two models. The first model assesse
 
 Wage Tax Model:
 
-$$
+$
 \text{WageTax}_{it} = \beta_{0,1} + \beta_{1,1} \text{NBA Team}_i + \beta_{2,1} \text{Post-2016}_t + \beta_{3,1} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,1}
-$$
+$
 
 Sales Tax Model:
 
-$$
+$
 \text{SalesTax}_{it} = \beta_{0,2} + \beta_{1,2} \text{NBA Team}_i + \beta_{2,2} \text{Post-2016}_t + \beta_{3,2} (\text{NBA Team}_i \times \text{Post-2016}_t) + \epsilon_{it,2}
-$$
+$
 
 Where:
 
