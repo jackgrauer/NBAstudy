@@ -1,4 +1,4 @@
-Does NBA Revenue Matter to Local Governments? 
+# Does NBA Revenue Matter to Local Governments? 
 
 Abstract: This study tested the relationship between wage tax revenue in mid-sized U.S. cities like Philadelphia that host professional basketball teams, and NBA revenue fluctuations. Results indicate NBA revenue increases do not spill over to tax revenue gains in Philadelphia, and NBA player payrolls do not significantly impact city wage tax in the cities observed.
 
@@ -34,12 +34,7 @@ The 2016 NBA-Turner-ESPN deal accounted for this change in the 76ers’ contribu
 
 Sports economists have used team relocations, venue construction, and lockouts and strikes as natural experiments to this effect, but the last major 2011 NBA stoppage resulted in only 11 un-played NBA home games over the course of 161-days. League-wide, the partial loss of a single season represented hundreds of millions of dollars due to a lockout by team management over a contract dispute. Locally, the Philadelphia City Controller’s Office estimated potential tax revenue losses at only around $90,000 per game (Gambacorta). 
 
-
-
-LITERATURE REVIEW 
-
-
-
+## LITERATURE REVIEW 
 Majority academic concensus holds that consensus public investment in sports mostly produces losses, and occasionally neutral results or slim gains (Bradbury et al., 2023, p. 2). The few voices of dissent have generally held that the public benefits of professional sports may only be quantified in extra-financial metrics like civic pride and personal inspiration, and have favored qualitative methodologies like phone surveys over 
 
 Bradbury et al. has already recently and diligently catalogued the recent, the larger history of work on the economic effects of all professional sports leagues over the last several decades. The current review focused more narrowly on NBA teams and stadiums and the tax revenue local governments collect from them.  
@@ -78,24 +73,26 @@ Annual city population estimates came from the US Census Bureau’s Current Popu
 
 The dataset included annual population, local wage tax revenue, NBA player payrolls, and macroeconomic measures for each city between 2001 and 2022. We grouped 17 cities by presence or absence of a wage tax system, sales tax system, and an NBA team. The presence or absence of data in these fields determined each city’s role as a treatment or a control group in each test. We excluded the largest US population centers like New York and Chicago. The size difference between those large municipal governments’ tax revenue bases and their NBA teams made it almost impossible to observe the effect for which we were looking.
 
-Data pre-processing consisted of five steps. To create control and treatment groups, we flagged cities by the presence or absence of wage and sales tax systems and the presence or absence of NBA franchises. This enabled us to test for a difference in tax revenue increases in cities during 2016 that host NBA teams versus non-NBA teams hosting cities. To control for COVID 19's effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to their values in 2020 dollars with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by years, we normalized financial data on an annual, per capita basis.
+Data pre-processing consisted of five steps. To create control and treatment groups, we flagged cities by the presence or absence of wage and sales tax systems and the presence or absence of NBA franchises. This enabled us to test for a difference in tax revenue increases in cities during 2016 that host NBA teams versus non-NBA teams hosting cities. To control for COVID 19's effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to 2020 values with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by years, we normalized financial data on an annual, per capita basis.
 
-In the next phase, we conducted a simple Origin of Least Squares (OLS)
+To test whether a difference-in-difference (DID) analysis would work in this scenario, we ran a preliminary Origin of Least Squares (OLS) regression to find lines of best fit for aggregated wage and sales tax revenue data from all cities prior to the selected intervention. We then calculated and compared the slopes of those lines. 
+
+Diagnostics on the preliminary OLS regression also guided model selection. Heteroscedascity and non-normality warnings, both common in panel data analyses, informed the decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors. 
+
+We set up a multivariate regression that ran two models. The first model assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. 
+
+The first model designated cities with an NBA team and a sales tax system as the treatment group. Cities with no NBA and a sales tax as a control group. The second model was the similar, except treatment and control groups were defined based on the presence or absence of a wage tax system rather, not a sales tax system. This configuration enabled us to assess whether cities with NBA teams saw sales tax revenue increases in tandem with the major revenue increases the NBA experienced in 2016.
+
+In both models, we represented the 2016 intervention with the variable ‘Post-2016,’ dividing the data into two time periods: before the 2016 intervention and after it. With this term, we hoped to capture the potential differences in tax revenue impacts in cities with NBA teams before and after the 2016 media deal. The interaction term ‘NBA Team * Post-2016’ isolated the effect of the media deal, capturing any potential difference of impact on cities with and without NBA teams.
+
+ which grouped the data by years before the NBA media deal and years after. "Post-2016" isolated the interaction between NBA team presence and the years after the introduction our treatment: the 2016 media deal.
+
+
+## RESULTS 
 
 
 
-
-
-
-# GPT NEEDED 
-
-...Diagnostics reflected potential problems in the data with homoscedasticity, non-normality and multicollinearity. We centered the interaction and intervention variables to reduce variance inflation factor (VIF) to acceptable levels and adopted a Robust Linear Model (RLM) with Hampel standard errors to mitigate potential problems caused by heteroscedasticity and non-normality of data. 
-
-RESULTS 
-
-# GPT NEEDED 
-
-LIMITATIONS 
+## LIMITATIONS 
 
 ...NBA teams host numerous games that attract large crowds. This can directly increase local economic activity through spending on tickets, concessions, merchandise, parking, and other game-related expenses. 
 
@@ -119,11 +116,11 @@ Philadelphia has denied most requests for public access to transaction records b
 
 ##insert thing about how we're talking about what the EDAF may have owed, not what they actually paid, since we're not looking at primary source documentation.
 
-CONCLUSION 
+## CONCLUSION 
 
 The 2016 NBA-Turner-ESPN media produced league-level revenue gains, and increased NBA players’ payrolls by a substantial margin. These payroll increases did not further translate to substantial local tax revenue through the conduit of wage tax in any city observed in this study.  
 
-REFERENCES 
+## REFERENCES 
 
 Acolin, A. (2024, January 15). 76 Place could cost Philadelphia $908 million in lost tax revenue, destabilizing existing jobs, businesses, and tax base. WHYY. https://drive.google.com/file/d/1OKVyk57PrsjrcdV9eMYXCSOCBzSKTkQj/view?pli=1. 
 
@@ -227,52 +224,4 @@ Whaples, R. (2006). Do Economists Agree on Anything? Yes! The Economists’ Voic
 
 76Devco. (2023). FAQ. https://docs.google.com/spreadsheets/d/19j8VGrc6faFTfIWjIvhisnEsHBa0WNzZtqLOgCp14Yo/edit#gid=1815679198.  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Methodology
-
-To explore the relationship between NBA revenue and local government tax revenue, we created a dataset encompassing NBA teams’ financial data and city tax revenue data from 2001 to 2022. The dataset included variables such as franchise value, revenue, player payroll, operating income, and gate receipts, extracted from Forbes and Statista. City-level financial data was obtained from the consolidated annual financial reports of Philadelphia and other relevant cities.
-
-We classified cities based on the presence of NBA revenue, wage tax, and sales tax systems. Cities were grouped into treatment or control groups depending on these classifications. For example, Philadelphia, Cleveland, and Detroit were identified as cities with both NBA revenue and wage tax systems.
-
-Key steps in our methodology included:
-
-	1.	Data Collection and Cleaning: Historical financial data from Forbes and Statista, along with city tax data, were aggregated and cleaned. Missing data for some years was interpolated where appropriate.
-	2.	Smoothing Pandemic Effects: To mitigate the impact of the COVID-19 pandemic, we smoothed data for the years 2020 and 2021 by averaging the closest unaffected years before and after the pandemic.
-	3.	Inflation Adjustment: All financial figures were adjusted for inflation using the Consumer Price Index (CPI) to the base year 2020.
-	4.	Per Capita Adjustment: Financial figures were normalized on a per capita basis to control for population differences between cities.
-	5.	Aggregation and Visualization: Aggregated NBA revenue, sales tax, and wage tax data were graphically represented to observe trends and the impact of the 2016 NBA media distribution deal.
-	6.	Parallel Trends Analysis: We performed parallel trends analysis to compare sales tax and wage tax trends in cities with and without NBA teams before the 2016 intervention.
-	7.	Difference-in-Differences (DiD) Analysis: A multivariate DiD analysis using Weighted Least Squares (WLS) was conducted to quantify the impact of the 2016 NBA media deal on local tax revenues.
-	8.	Statistical Diagnostics: We conducted various statistical tests, including Variance Inflation Factor (VIF) for multicollinearity, Shapiro-Wilk test for normality, and Breusch-Pagan test for heteroscedasticity.
-
-Results
-
-Our analysis revealed several key findings regarding the impact of NBA revenue on local government tax revenues:
-
-	1.	Aggregated Trends: The aggregated NBA revenue, sales tax, and wage tax trends for selected cities from 2001 to 2022 showed no significant fluctuations other than a pandemic-adjacent dip in wage tax revenue. Notably, 76ers tax contributions to Philadelphia remained mostly static until 2015, after which there was a significant increase coinciding with the 2016 NBA media deal.
-	2.	Parallel Trends Analysis: The slopes of sales tax trends for cities with NBA teams (0.027) and without NBA teams (0.032) were not significantly different (p = 0.19). Similarly, the slopes of wage tax trends for cities with NBA teams (0.015) and without NBA teams (0.018) showed no significant difference (p = 0.23).
-	3.	Difference-in-Differences Analysis: The WLS models for both sales tax and wage tax did not show significant coefficients for the interaction term (NBA_Team * Post_2016), indicating that the 2016 NBA media deal did not lead to a significant increase in local tax revenues. Specifically, the sales tax model had an interaction term coefficient of 0.024 (p = 0.67), and the wage tax model had an interaction term coefficient of 0.017 (p = 0.58).
-	4.	Statistical Diagnostics:
-	•	Sales Tax Model: VIF values for all variables were below 5, indicating no severe multicollinearity. The Shapiro-Wilk test indicated normality of residuals (p = 0.32), and the Breusch-Pagan test showed no evidence of heteroscedasticity (p = 0.41).
-	•	Wage Tax Model: VIF values for all variables were also below 5. The Shapiro-Wilk test confirmed normality (p = 0.29), and the Breusch-Pagan test indicated homoscedasticity (p = 0.45).
-
-These results corroborate the hypothesis that NBA financial gains do not translate to significant local tax revenue gains through wage and sales taxes. The significant increase in NBA player salaries post-2016 did not correspond with substantial increases in tax revenue for cities hosting NBA teams.
-
-  
 
