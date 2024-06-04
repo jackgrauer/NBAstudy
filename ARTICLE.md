@@ -26,7 +26,7 @@ To test whether the 76ers and their home venue met predictions, we requested rel
 
 The lease document, available on file at the Department of Records, indicated developers and the property management company, Spectrum Arena Partners, LP, paid no realty transfer tax and (lease p. 44, 78, 388). A document in Bessey V. Spectrum Arena, filed by Spectrum Arena’s attorney in US Federal Court, confirmed Spectrum pays no parking tax, and a fixed $2 million annual payment-in-lieu-of-taxes in place of property tax. The 76ers and their property management company, according to the court documents, does pay other taxes typical to a company operating in City limits: Wage, Business Privilege Tax, Sales, Amusement, and Net Profits Taxes. 
 
-In the exploratory phase of this study, we estimated the 76ers’ municipal tax revenue contributions to Philadelphia between 2001 and 2022, using Forbes financial data on the team, and consolidated annual financial reports from the City. The Methodology section discusses the dataset in greater data. We looked at Philadelphia tax revenue and used tax rate data to calculate the 76ers’ estimated tax contributions: an basic, uncontrolled limited in scope to Philadelphia.
+In the exploratory phase of this study, we estimated the 76ers’ municipal tax revenue contributions to Philadelphia between 2001 and 2022, using Forbes financial data on the team, and consolidated municipal annual financial reports.We looked at Philadelphia tax revenue and used tax rate data to calculate the 76ers’ estimated tax contributions: an basic, uncontrolled limited in scope to Philadelphia.
 
 If these estimates proved at all accurate, 76ers player payrolls markedly increased in 2016. The pandemic hampered them briefly and picked up where they left off afterward. Tax revenues in Philadelphia, magnitudes larger in scale, registered no noticeable change that year.
 
@@ -55,25 +55,27 @@ Wage tax revenue may say more about a city’s fiscal health than sales tax per 
 
 In the exploratory phase of this study, we estimated the 76ers’ total tax contributions to Philadelphia since 2001. We listed known taxes through which local government receives revenue from NBA operations: amusement, business, net profits, wage, and sales taxes. Spectrum makes a $2 million annual Payment in Lieu of Taxes in place of property tax to Philadelphia. 
 
-Annual Philadelphia tax rate data was used to estimate how much the 76ers owed in each of these tax categories between 2001 and 2022. We excluded gate receipts data because it was missing for some years. Given Zimbalist’s estimate that 1/3 of NBA players live in the cities that host their teams, we estimated that Philadelphia charged 1/3 of 76ers resident wage tax rate and non-resident wage rate to the rest. 
+Annual Philadelphia tax rate data was used to estimate how much the 76ers owed in each of these tax categories between 2001 and 2022. Given Zimbalist’s estimate that 1/3 of NBA players live in the cities that host their teams, we estimated that Philadelphia charged 1/3 of the 76ers player roster resident wage tax rate and non-resident wage rate to the rest. 
 
-The observed 2015-2016 NBA revenue influx coincided with the termination of a collective bargaining contract between NBAs and team management, which raised the soft salary cap for NBA players 35%: a historically significant amount. NBA free agent player salaries increased 81% during 2016 (Keefer 2021, p. 3475). Economist Quinn Keefer used these events to test whether better player compensation produced better on-court performance. From an public administration perspective, these events also created a natural experiment test whether NBA teams’ finances efffect their home cities' tax revenue bases.
+Two coinciding events produce the 2016 NBA revenue influx. A collective bargaining contract between NBAs and team management ended that year, which raised the soft salary cap for NBA players 35%: a historically significant amount. A large NBA media distrubtion deal also took effect at that time, which inflated professional free agent basketball player salaries 81% during 2016 (Keefer 2021, p. 3475). 
 
-Since these league-level event gains produced a major, positive impact to the 76ers' finances, but no noticeable gains to Philadelphia's tax revenue base, we predicted a similar situation across other NBA teams and other NBA host cities: the NBA's 2016 would translate to revenue increases for NBA teams, but would not translate to local tax revenue gains for NBA-team host cities.
+Economist Quinn Keefer used these events to test whether better player compensation produced better on-court performance. From an public administration perspective, these events also created a natural experiment test whether NBA teams’ finances efffect their home cities' tax revenue bases.
 
-## Main Study
+Preliminary analysis suggested these league-level event gains produced a major, positive impact to the 76ers' finances, but no noticeable gains to Philadelphia's tax revenue base, we predicted a similar situation across other NBA teams and other NBA host cities: the NBA's 2016 would translate to revenue increases for NBA teams, but would not translate to local tax revenue gains for NBA-team host cities.
 
-We tested this prediction on 17 mid-sized US cities between 2001 and 2002. The study excluded major US population centers like New York and Chicago. These larger US cities' tax bases were too large compared to the size of their basketball teams for us to observe the effects we wanted to observe. We also eliminated Oklahoma City due to a team relocation during the observation period. 
+We tested this prediction more formally on 17 mid-sized US cities between 2001 and 2002. The study excluded major US population centers like New York and Chicago; the size difference between cities that large and their respective NBA teams would likely prove too large, making it unlikely that we would be able to isolate the effects we wanted to observe. We also eliminated Oklahoma City due to a team relocation during the observation period. 
 
 City wage and sales tax revenue data came from each respective city’s consolidated annual financial reports, NBA financial data from Forbes and Statista, historical city population estimates from the US Census Bureau's Population Estimates Program, and macroeconomic data from the Federal Reserve Bank of St. Louis. 
 
-Data pre-processing consisted of five steps. To create control and treatment groups, we flagged cities by the presence or absence of wage and sales tax systems and the presence or absence of NBA franchises. This enabled us to test for a difference in tax revenue increases in cities during 2016 that host NBA teams versus non-NBA teams hosting cities. To control for COVID 19's effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to 2020 values with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by years, we normalized financial data on an annual, per capita basis.
+Data pre-processing consisted of five steps. To create control and treatment groups, we flagged cities by the presence or absence of wage and sales tax systems and the presence or absence of NBA franchises. This enabled us to test for a difference in tax revenue increases in cities during 2016 that host NBA teams versus non-NBA teams hosting cities. 
 
-To test whether a difference-in-difference (DID) analysis would work in this scenario, we needed to test for parallel trends between aggregated wage and sales tax revenue prior to 2016. We ran a preliminary Origin of Least Squares (OLS) regression to find lines of best fit for those variables. We then calculated and compared the slopes of those lines. 
+To control for COVID 19's effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to 2020 values with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by years, we normalized financial data on an annual, per capita basis.
 
-Diagnostics on the preliminary OLS regression also guided model selection. Heteroscedascity and non-normality warnings, both common in panel data analyses, informed the decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors. 
+To justify the use of  adifference-in-difference (DID) analysis, we needed to test for parallel trends between aggregated wage and sales tax revenue prior to 2016. We ran a preliminary Origin of Least Squares (OLS) regression to find lines of best fit for those variables. We then calculated and compared the slopes of those lines. 
 
-We set up a multivariate regression that ran two models. The first model assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. The equations are represented here:
+Diagnostics on the preliminary OLS regression also guided model selection. Heteroscedascity and non-normality warnings, common in panel data analyses, informed our decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors. 
+
+We set up a multivariate regression that ran two models. The first assessed the 2016 media deal's impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on several presence or absence of an NBA team, and the presence or absence of wage and sales systems. The equations are represented here:
 
 <h2>Wage Tax Model:</h2>
 <p>
@@ -105,49 +107,59 @@ $\beta_{3,1}$ and $\beta_{3,2}$ are the interaction terms capturing the effect o
 
 $\epsilon_{it,1}$ and $\epsilon_{it,2}$ are the error terms for the wage tax and sales tax models.
 
-
 The first model designated cities with an NBA team and a sales tax system as the treatment group. Cities with no NBA and a sales tax were designated as the control group. The second model the similar, except treatment and control groups were defined based on the presence or absence of a wage tax system. This configuration enabled us to assess whether cities with NBA teams saw sales tax revenue increases in tandem with the major revenue increases the NBA experienced in 2016.
 
 In both models, we represented the 2016 intervention with the variable ‘Post-2016,’ which divided observations by whether they were made before the 2016 intervention and after it. This term captured differences in tax revenue impacts in cities with NBA teams before and after the 2016 media deal. The interaction term ‘NBA Team * Post-2016’ isolated the effect of the media deal to any potential difference of impact on cities with and without NBA teams.
 
 Given the early diagnostic warnings the preliminary data analysis produced, we performed several post-modelling tests to assess the severity of multicollinearity, and heteroscedascity in the WLS models. To test whether non-normality of data threatened the strength of our hypotheses, we re-tested them with stationary bootstrapping.
 
-## RESULTS 
+## RESULTS of Exploratory Analysis
+The exploratory phase of this study consisted of a compared of Philadelphia tax revenue collections to estimated 76ers tax obligations from 2001 to 2022.
 
-The exploratory section of this study compared tax revenue collected by the City of Philadelphia and informed estimates of what the 76ers and their property management company owed Philadelphia in taxes from 2001 to 2002. On Philadelphia's side, we identified the three line items to which the 76ers' operation contributed: Business Privelige, Wage and Earnings, and Sales and Use Taxes. 
+Estimated tax contributions to Philadelphia by the 76ers remained static, at around an annual $2 million, between 2001 and 2015. 2016 marked an uptick, coincident with the Turner-ESPN media deal, and peaked in 2022 at around $7 million. In line with Keefer's observation that the deal produced significant player salary increases, estimated 76ers wage tax contributions  grew from $1.5 in 2016 to $4.6 million in 2022: the largest observed increase of included variable.
 
-On the 76ers' side, we matched each available financial metric available on the team to an appropriate per year percentage charged in Philadelphia tax. For example, we estimated Amusement Tax generated by the 76ers for Philadelphia by taking 76ers' gate receipt revenue for each year and applying the percentage charged in amsent tax that year.
+Both the 76ers' and Philadelphia noticeably dipped during the Covid pandemic years. The 2016 media deal, however, corresponded only to a strong response from the 76ers' financials. The effect did not seem to translate to Philadelphia tax revenue collection trends. 
 
-Philadelphia’s three major tax revenue streams over 20 years showed no obvious fluctuations other than a pandemic-adjacent dip in wage tax revenue. 76ers tax contributions to Philadelphia remained mostly static until 2015, and showed a subsequent upward turn, temporarily stifled by the pandemic.
+## RESULTS of Main Analysis
+This study's main section expanded scope to 17 cities between 2001 and 2022, featured a host of control measures, and introduced treatment and control groups in a setup designed to isolate the effect of the NBA's 2016 financial performance on municipal tax revenues. 
 
-The findings, aligned with the existing research, suggested financial performance of NBA teams had little influence on tax revenue in host cities.
+# Parallel Trends Assumption 
+The preliminary OLS regressions showed that sales and wage tax revenues shared similar slopes (p = .353) consistent between cities with and without NBA teams. This provided proof of parallel trends in these variables prior to the intervention: a necessary pre-requisite for a multivariate DID analysis using a WLS model.
+
+# Model Fits 
+The sales tax model accounted for %47.8 of observed observed variance (R² = 0.478), the wage tax model accounted for 42.3%. These are acceptable values for social science purposes, given the presence of statistically sigificant explanatory variables. (Ozili, p.10). 
+
+# Impact of NBA Team Presence Overall
+The sales tax model associated the presence of an NBA team to a statistically, but not practically significant reduction in sales tax revenue(coefficient = -0.0007, p < 0.001). The wage tax model produced a similar figure (coefficient = -0.0008, p < 0.001).
+
+# Impact of the 2016 NBA Media Deal
+Results further indicated no significant change in tax revenues before and after the 2016 media deal. The coefficients of the interaction terms in both models ranged from -0.0002 to 0.0002, with p-values over 0.667. Interaction terms in both sales tax and wage tax analyses did not show significant effects post-2016 media deal (coefficients: -6.874e-05 and -0.0002, p-values: 0.823 and 0.712).
+
+# Model Diagnostics
+
+Post-regression diagnostic tests suggested some potential issues with the models. We either addressed those issues with modifications to the models, or resolved them with further assessments. P-values and other relevant statistics are available in Appendix _. 
+
+No values produced by the Variance Inflation Factor (VIF) test exceeded 5, which alleviated multicollinearity concerns. The Shapiro-Wilk test yeilded small p-values (< .05) in both values, which indicated non-normality of data
+
+
+
 
 
 
 
 ## LIMITATIONS 
+Philadelphia denied virtually all requests for public access to transaction records between Wells Fargo Center and the city with information in question in this study, among many others related to the stadium proposal (Althouse).
+Without access to primary source financial documents, we had to infer how much the 76ers and their home stadium's pays Philadelphia annual in taxes based on a collage of court filings and a real estate document the City Solicitor's Office claimed did not exist.
 
-...NBA teams host numerous games that attract large crowds. This can directly increase local economic activity through spending on tickets, concessions, merchandise, parking, and other game-related expenses. 
+The NBA's strong 2016 financial performance in 2016 may have exerted a localized economic effect in Philadelphia to which our back-of-napkin test was insensitive. This study would benefit from improved access to direct documentation of the financial transactions between NBA teams and their host cities.
 
-Indirect and Induced Impacts: The presence of NBA teams can also indirectly boost local businesses, such as bars, restaurants, and hotels, as fans often spend money in these establishments before and after games. Additionally, these businesses may hire more employees or increase hours to accommodate game-day crowds, further stimulating local economies. 
-
-Enhanced City Visibility and Branding: Hosting an NBA team puts cities on a national or even international stage, potentially attracting more tourists, business investments, and enhancing the city's brand as a vibrant, lively place to visit or live. 
-
-## Limitations of the Proxy: 
-
-Oversimplification of Economic Contributions: While the presence of an NBA team is indicative of certain types of economic activities, it might oversimplify or overlook other economic dynamics. For instance, the actual economic impact of an NBA team can be far less than expected if most of the money spent on and around game days comes from local residents (substitution effect), meaning it merely redistributes money that might have been spent on other local entertainment options. 
-
-Neglecting Non-Economic Factors: The proxy does not account for non-economic factors that might influence economic activities, such as cultural shifts, changes in consumer preferences, or broader economic downturns or booms that affect overall spending patterns regardless of the presence of an NBA team. 
-
-Ignoring Negative Impacts: The presence of an NBA team can also have potential downsides, such as increased congestion, higher public safety costs on game days, and significant public expenditure on stadium subsidies and infrastructure improvements, which might not result in a net economic benefit. These aspects are not captured merely by the presence of a team. 
-
-Heterogeneity Among Cities: The economic influence of NBA teams might vary significantly from one city to another based on a range of factors such as team popularity, the size of the metropolitan area, and the local economic structure. The proxy assumes a uniform impact across all cities, which is an oversimplification. 
+While the presence of an NBA team indicates of certain types of economic activities, our model undoubtedly oversimplifed and overlooked numerous economic dynamics. For instance, the actual economic impact of an NBA team can be far less than expected if most of the money spent on and around game days comes from local residents (substitution effect), meaning it merely redistributes money that might have been spent on other local entertainment options. 
 
 Further research would benefit from better access to primary source financial documents and would include more granular monthly data. It would also benefit from data on all types of taxes cities exact from the NBA in addition to wage tax, such as net profits and sales tax.   
 
-Philadelphia has denied most requests for public access to transaction records between Wells Fargo Center and the city with information in question in this study, among many others related to the stadium proposal (Althouse). Without access to documents needed to directly assess the predictions, this study relied on annual, city-level financial data. Accounting conventions varied between cities; fiscal years begin and end in different months. An analysis of monthly data would further articulate the nuances of the 2016 intervention and improve control of actuarial variances. 
+Though municipal consolidated financial statements reviewed for this study cohered closely with US Generally Accepted Accounting Principles (GAAP) accounting conventions varied between cities. Fiscal years began and ended in different months in different cities. Different tax regimes defined tax categories different. While most data was published on an annual basis,monthly data would further articulate the nuances of the 2016 intervention and improve control of actuarial variances. 
 
-##insert thing about how we're talking about what the EDAF may have owed, not what they actually paid, since we're not looking at primary source documentation.
+
 
 ## CONCLUSION 
 
@@ -224,6 +236,8 @@ Lee, M. (2014, October 6). NBA’s new $24 billion media deal with Turner, ESPN 
 McCrystal, Laura. (2019). Philly’s Wage Tax is the Highest in the Country. Here is Everything You Need to Know About it. https://www.inquirer.com/news/wage-tax-rate-philadelphia-business-jobs-reduction-reform-20190515.html. 
 
 Macnow, G. (1991, July 4). Arena Legislation sails through City Council. Philadelphia Inquirer, p. B.1. 
+
+Ozili, P. K. (2022). The Acceptable R-Square in Empirical Modelling for Social Science Research. SSRN Electronic Journal. https://doi.org/10.2139/ssrn.4128165
 
 Philadelphia Department of Revenue. (2023). Historic Tax Rates. https://www.phila.gov/media/20231116085343/Historic-Tax-Rates-Updated-Dec-2023.pdf. 
 

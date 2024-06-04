@@ -1,0 +1,166 @@
+In this analysis, several post-regression diagnostic tests were conducted to assess the validity and robustness of the sales tax and wage tax models. The following concerns were identified:
+
+Normality: Deviations from normality were observed in the residuals of both models, as indicated by the Shapiro-Wilk test results. This could impact the reliability of hypothesis tests and confidence intervals.
+
+Heteroscedasticity: Significant heteroscedasticity was detected in the wage tax model, according to the Breusch-Pagan test. This violation suggests that the variance of residuals is not constant, potentially affecting the efficiency of model estimates.
+
+Multicollinearity: No significant multicollinearity was found in either model, as evidenced by the low VIF values for all predictors.
+
+
+
+Diagnostic Analysis of Sales Tax and Wage Tax Models
+Overview
+To ensure the robustness and reliability of the sales tax and wage tax models, various diagnostic tests were conducted. These tests include assessments for normality, heteroscedasticity, and multicollinearity. The findings from these diagnostics provide insights into the validity of the model assumptions and the stability of the model parameters.
+
+Shapiro-Wilk Test for Normality
+The Shapiro-Wilk test was applied to the residuals of both models to check if they follow a normal distribution.
+
+Sales Tax Model:
+P-value: 
+8.71
+×
+1
+0
+−
+12
+8.71×10 
+−12
+ 
+Interpretation: The p-value is very low, suggesting that the residuals do not follow a normal distribution. This deviation from normality might impact the inference of the model parameters.
+Wage Tax Model:
+P-value: 
+4.74
+×
+1
+0
+−
+5
+4.74×10 
+−5
+ 
+Interpretation: Similar to the sales tax model, the p-value indicates a departure from normality, suggesting potential issues with the distribution of residuals.
+Breusch-Pagan Test for Heteroscedasticity
+The Breusch-Pagan test was used to detect heteroscedasticity in the residuals, i.e., whether the variance of residuals is constant across observations.
+
+Sales Tax Model:
+P-value: 
+0.807
+0.807
+Interpretation: The high p-value suggests no significant heteroscedasticity, indicating that the assumption of constant variance is met for the sales tax model.
+Wage Tax Model:
+P-value: 
+1.36
+×
+1
+0
+−
+10
+1.36×10 
+−10
+ 
+Interpretation: The very low p-value indicates significant heteroscedasticity, meaning the variance of residuals is not constant. This violation could affect the efficiency of the model estimates.
+Variance Inflation Factor (VIF)
+The Variance Inflation Factor (VIF) measures the extent of multicollinearity in the model predictors. High VIF values indicate high multicollinearity, which can destabilize the regression coefficients.
+
+Sales Tax Model:
+
+VIF Values:
+Constant: 
+3.56
+3.56
+NBA_Team: 
+1.07
+1.07
+Post_2016: 
+3.33
+3.33
+Interaction_2016: 
+3.40
+3.40
+Interpretation: All VIF values are below 5, indicating that multicollinearity is not a concern in the sales tax model.
+Wage Tax Model:
+
+VIF Values:
+Constant: 
+1.87
+1.87
+NBA_Team: 
+1.07
+1.07
+Post_2016: 
+1.75
+1.75
+Interaction_2016: 
+1.82
+1.82
+Interpretation: Similar to the sales tax model, all VIF values are below 5, indicating no significant multicollinearity.
+Summary of Diagnostic Findings
+
+Normality: Both models show deviations from normality, as indicated by the Shapiro-Wilk test results. This suggests that the residuals are not normally distributed, which could impact hypothesis testing and confidence intervals.
+
+Heteroscedasticity: The sales tax model passes the Breusch-Pagan test, indicating constant variance in residuals. However, the wage tax model fails this test, indicating significant heteroscedasticity.
+
+Multicollinearity: VIF values for both models are low, suggesting that multicollinearity is not an issue in either model.
+Conclusion
+The diagnostic tests reveal some concerns with the normality and heteroscedasticity of residuals, particularly in the wage tax model. Despite these issues, the low VIF values indicate that multicollinearity is not a problem. Addressing the identified concerns, such as using robust standard errors or transforming variables, could improve the reliability of the models.
+
+
+Bootstrappy
+
+Stationary Bootstrapping Analysis
+Purpose
+The stationary bootstrapping method was employed to assess the robustness of the residuals from the sales tax and wage tax models. This non-parametric resampling technique helps in understanding the variability and confidence intervals of the model residuals, which is crucial for validating the model's reliability.
+
+Method
+Bootstrapping Procedure: We generated 10,000 bootstrap samples for the residuals of both the sales tax and wage tax models.
+Confidence Intervals: We calculated 95% confidence intervals for the residuals to understand their spread and to check for any potential biases or anomalies.
+Hypothesis Testing: We performed hypothesis testing on the bootstrap samples to evaluate the distribution and significance of the residuals.
+Results
+Sales Tax Residuals
+95% Confidence Interval: The lower bound ranged from -0.0003552 to -0.00036186, while the upper bound ranged from 0.00080083 to 0.00083068.
+P-values for Hypothesis Testing: The p-values for the hypothesis tests on the residuals were mostly very high, indicating that the residuals are not significantly different from zero, suggesting no bias in the model residuals.
+Wage Tax Residuals
+95% Confidence Interval: The lower bound ranged from -0.00069225 to -0.00068627, while the upper bound ranged from 0.00097161 to 0.00098265.
+P-values for Hypothesis Testing: Similar to the sales tax residuals, the p-values were also high, confirming the absence of significant biases.
+Interpretation
+The results from the stationary bootstrapping analysis indicate that the residuals of both the sales tax and wage tax models are centered around zero with no significant biases. The high p-values from hypothesis testing suggest that the residuals are stable and do not deviate significantly from the expected distribution. This adds robustness to our model findings and confirms that our models are well-specified and reliable.
+
+Detailed Breakdown
+Sales Tax Residuals:
+Lower Bound of 95% CI: 
+−
+0.00036186
+−0.00036186 to 
+−
+0.0003552
+−0.0003552
+Upper Bound of 95% CI: 
+0.00080083
+0.00080083 to 
+0.00083068
+0.00083068
+P-values for Hypothesis Testing: Ranged from approximately 
+0.98
+0.98 to 
+0.999
+0.999, indicating no significant difference from zero.
+Wage Tax Residuals:
+Lower Bound of 95% CI: 
+−
+0.00069225
+−0.00069225 to 
+−
+0.00068627
+−0.00068627
+Upper Bound of 95% CI: 
+0.00097161
+0.00097161 to 
+0.00098265
+0.00098265
+P-values for Hypothesis Testing: Ranged from approximately 
+0.98
+0.98 to 
+0.999
+0.999, consistent with no significant deviation from zero.
+Conclusion
+The stationary bootstrapping analysis provided strong evidence that the residuals of the sales tax and wage tax models are stable and unbiased. This reinforces the reliability of the models and their findings regarding the impact of NBA team presence and the 2016 NBA media deal on municipal tax revenues.
