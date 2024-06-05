@@ -136,3 +136,47 @@ The non-significant p-value indicates that the difference in the decline rates o
   - P-value: 0.35330852193783935
 
 Similarly, the difference in wage tax revenue trends between the two groups is not statistically significant.
+
+# Appendix D
+
+## Sales Tax Model Summary with WLS and 2016 Intervention Year
+
+This section provides a summary of the sales tax model using Weighted Least Squares (WLS) regression, incorporating an intervention year in 2016. The analysis aims to understand the impact of having an NBA team and the changes post-2016.
+
+### WLS Regression Results
+
+| Statistic                       | Value              |
+|---------------------------------|--------------------|
+| **R-squared**                   | 0.478              |
+| **Adj. R-squared**              | 0.468              |
+| **F-statistic**                 | 49.70              |
+| **Prob (F-statistic)**          | 1.33e-22           |
+| **Log-Likelihood**              | 1048.6             |
+| **No. Observations**            | 160                |
+| **AIC**                         | -2089              |
+| **Df Residuals**                | 156                |
+| **BIC**                         | -2077              |
+| **Df Model**                    | 3                  |
+| **Covariance Type**             | HC3                |
+
+### Coefficients
+
+| Variable           | Coefficient   | Std. Error  | Z-Value  | P-Value  | [0.025  | 0.975] |
+|--------------------|---------------|-------------|----------|----------|---------|--------|
+| **const**          | 0.0011        | 4.87e-05    | 22.102   | 0.000    | 0.001   | 0.001  |
+| **NBA_Team**       | -0.0007       | 6.01e-05    | -11.914  | 0.000    | -0.001  | -0.001 |
+| **Post_2016**      | 4.96e-05      | 0.000       | 0.184    | 0.854    | -0.000  | 0.001  |
+| **Interaction_2016** | -6.874e-05   | 0.000       | -0.223   | 0.823    | -0.001  | 0.001  |
+
+### Notes
+
+- **Omnibus**: 20.631
+- **Prob(Omnibus)**: 0.000
+- **Jarque-Bera (JB)**: 25.472
+- **Prob(JB)**: 2.94e-06
+- **Skew**: 0.964
+- **Kurtosis**: 2.683
+- **Durbin-Watson**: 1.617
+- **Cond. No.**: 14.2
+
+- Standard Errors are heteroscedasticity robust (HC3)
