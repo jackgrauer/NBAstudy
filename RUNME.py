@@ -592,12 +592,6 @@ wage_tax_model_wls = sm.WLS(y_wage, X_wage, weights=weights_wage).fit(cov_type='
 print("Wage Tax Model Summary with WLS and 2016 Intervention Year")
 print(wage_tax_model_wls.summary())
 
-
-
-
-
-
-
 # Step 18: Diagnostics. Multicollinearity, Normality, Autorrelation and Heteroscedasticity Check for Both Models
 
 # Multicollinearity Test (VIF) for sales tax model
