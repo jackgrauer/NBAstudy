@@ -151,11 +151,11 @@ Further research would benefit from better access to primary source financial do
 
 Though municipal consolidated financial statements reviewed for this study adhered closely to US Generally Accepted Accounting Principles (GAAP), accounting conventions varied between cities. Fiscal years began and ended in different months in different cities. Different tax regimes defined tax categories differently. While most data was published on an annual basis, monthly data would further articulate the nuances of the 2016 intervention and improve control of actuarial variances.
 
-## CONCLUSION
+## Conclusion
 
 The 2016 NBA-Turner-ESPN media deal produced league-level revenue gains and increased NBA players’ payrolls by a substantial margin. These payroll increases did not translate to substantial local tax revenue through the conduit of wage tax in any city observed in this study. These results should be interpreted with the knowledge that we could not adequately resolve all statistical problems with the assumptions that underlie this claim.
 
-## REFERENCES 
+## References 
 Acolin, A. (2024, January 15). 76 Place could cost Philadelphia $908 million in lost tax revenue, destabilizing existing jobs, businesses, and tax base. WHYY. https://drive.google.com/file/d/1OKVyk57PrsjrcdV9eMYXCSOCBzSKTkQj/view?pli=1. 
 
 Althouse, M. (2023, April 22). City denies Right-to-Know requests for 76ers arena proposal, activists demand more information. Philly Voice. https://www.phillyvoice.com/76ers-arena-chinatown-right-to-know-requests-denied/. 
