@@ -1,6 +1,6 @@
 # Does NBA Revenue Matter to Local Governments? 
 
-## Abstract: This study tested the relationship between wage tax revenue in mid-sized U.S. cities like Philadelphia that host professional basketball teams and NBA revenue fluctuations. Results indicate NBA revenue increases do not spill over to tax revenue gains in Philadelphia, and NBA player payrolls do not significantly impact city wage tax in the cities observed.
+## Abstract: This study tested the relationship between NBA revenue fluctuations and tax revenue collections in mid-sized cites that host NBA teams. Results indicated NBA revenue gains did not significantly impact tax revenue influx in observed cities like Philadelphia.
 
 Developers associated with the Philadelphia 76ers want to build a new basketball arena near the city’s downtown Chinatown. City Council has yet to definitively block or approve the project but will likely make a final decision sometime in 2024.
 
