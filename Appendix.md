@@ -1,8 +1,4 @@
-# Appendix
-
-## Yearly Tax Contributions from the 76ers (No Negative Contributions)
-
-<small>
+## Appendix A: Yearly Tax Contributions from the 76ers (No Negative Contributions)
 
 | Year  | Amusement Tax | BIRT Gross Receipts | BIRT Net Income | Wage Tax Resident | Wage Tax Non-Resident | Sales Tax | Net Profits Tax | PILOT | Total Revenue |
 |-------|----------------|---------------------|------------------|-------------------|-----------------------|-----------|------------------|-------|---------------|
@@ -29,13 +25,7 @@
 | 2021  | $4,150,000     | $488,175            | $5,211,300       | $1,773,199         | $4,111,249             | $6,900,000| $3,236,399       | $2,000,000 | $27,870,322 |
 | 2022  | $6,100,000     | $524,965            | $7,188,000       | $1,974,933         | $4,628,749             | $7,420,000| $4,416,000       | $2,000,000 | $34,252,647 |
 
-</small>
-
-# Appendix
-
-## Philadelphia Tax Revenues By Year
-
-<small>
+## Appendix B: Philadelphia Tax Revenues By Year
 
 | Year  | Business Privilege | Wage and Earnings | Sales and Use  |
 |-------|---------------------|-------------------|----------------|
