@@ -52,4 +52,40 @@
 | 2021  | $541,598,000        | $1,450,745,000    | $209,740,000   |
 | 2022  | $749,865,000        | $1,653,878,000    | $277,690,000   |
 
+## Slope Trends and Statistical Tests
+
+**Slope of Sales Tax Trend:**
+
+- NBA cities: -4.026925068526744e-05
+- Non-NBA cities: -2.0936099088053373e-05
+
+**T-test for Parallel Trends (Sales Tax):**
+
+- T-statistic: -15.411849395399376
+- P-value: 1.364958997896191e-14
+- Degrees of freedom: 26.0
+
+**Slope Difference (Sales Tax):**
+
+- Difference: -1.933315159721407e-05
+- T-statistic: -0.9281909617845188
+- P-value: 0.3533085219378411
+
+**Slope of Wage Tax Trend:**
+
+- NBA cities: -6.61648190158625e-06
+- Non-NBA cities: 7.384962966335062e-05
+
+**T-test for Parallel Trends (Wage Tax):**
+
+- T-statistic: -42.86788390451699
+- P-value: 1.183069977160952e-25
+- Degrees of freedom: 26.0
+
+**Slope Difference (Wage Tax):**
+
+- Difference: -8.046611156493688e-05
+- T-statistic: -0.9281909617845228
+- P-value: 0.35330852193783935
+
 </small>
