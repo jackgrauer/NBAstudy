@@ -180,3 +180,227 @@ This section provides a summary of the sales tax model using Weighted Least Squa
 - **Cond. No.**: 14.2
 
 - Standard Errors are heteroscedasticity robust (HC3)
+
+## Sales Tax Model Summary with WLS and 2016 Intervention Year
+
+This section provides a summary of the sales tax model using Weighted Least Squares (WLS) regression, incorporating an intervention year in 2016. The analysis aims to understand the impact of having an NBA team and the changes post-2016.
+
+### WLS Regression Results
+
+| Statistic                       | Value              |
+|---------------------------------|--------------------|
+| **R-squared**                   | 0.478              |
+| **Adj. R-squared**              | 0.468              |
+| **F-statistic**                 | 49.70              |
+| **Prob (F-statistic)**          | 1.33e-22           |
+| **Log-Likelihood**              | 1048.6             |
+| **No. Observations**            | 160                |
+| **AIC**                         | -2089              |
+| **Df Residuals**                | 156                |
+| **BIC**                         | -2077              |
+| **Df Model**                    | 3                  |
+| **Covariance Type**             | HC3                |
+
+### Coefficients
+
+| Variable           | Coefficient   | Std. Error  | Z-Value  | P-Value  | [0.025  | 0.975] |
+|--------------------|---------------|-------------|----------|----------|---------|--------|
+| **const**          | 0.0011        | 4.87e-05    | 22.102   | 0.000    | 0.001   | 0.001  |
+| **NBA_Team**       | -0.0007       | 6.01e-05    | -11.914  | 0.000    | -0.001  | -0.001 |
+| **Post_2016**      | 4.96e-05      | 0.000       | 0.184    | 0.854    | -0.000  | 0.001  |
+| **Interaction_2016** | -6.874e-05   | 0.000       | -0.223   | 0.823    | -0.001  | 0.001  |
+
+### Notes
+
+- **Omnibus**: 20.631
+- **Prob(Omnibus)**: 0.000
+- **Jarque-Bera (JB)**: 25.472
+- **Prob(JB)**: 2.94e-06
+- **Skew**: 0.964
+- **Kurtosis**: 2.683
+- **Durbin-Watson**: 1.617
+- **Cond. No.**: 14.2
+
+- Standard Errors are heteroscedasticity robust (HC3)
+
+## Wage Tax Model Summary with WLS and 2016 Intervention Year
+
+This section provides a summary of the wage tax model using Weighted Least Squares (WLS) regression, incorporating an intervention year in 2016. The analysis aims to understand the impact of having an NBA team and the changes post-2016.
+
+### WLS Regression Results
+
+| Statistic                       | Value              |
+|---------------------------------|--------------------|
+| **R-squared**                   | 0.423              |
+| **Adj. R-squared**              | 0.407              |
+| **F-statistic**                 | 32.83              |
+| **Prob (F-statistic)**          | 3.67e-15           |
+| **Log-Likelihood**              | 695.91             |
+| **No. Observations**            | 112                |
+| **AIC**                         | -1384              |
+| **Df Residuals**                | 108                |
+| **BIC**                         | -1373              |
+| **Df Model**                    | 3                  |
+| **Covariance Type**             | HC3                |
+
+### Coefficients
+
+| Variable           | Coefficient   | Std. Error  | Z-Value  | P-Value  | [0.025  | 0.975] |
+|--------------------|---------------|-------------|----------|----------|---------|--------|
+| **const**          | 0.0011        | 8.21e-05    | 13.553   | 0.000    | 0.001   | 0.001  |
+| **NBA_Team**       | -0.0008       | 8.53e-05    | -9.676   | 0.000    | -0.001  | -0.001 |
+| **Post_2016**      | 0.0002        | 0.000       | 0.430    | 0.667    | -0.001  | 0.001  |
+| **Interaction_2016** | -0.0002     | 0.000       | -0.369   | 0.712    | -0.001  | 0.001  |
+
+### Notes
+
+- **Omnibus**: 5.550
+- **Prob(Omnibus)**: 0.062
+- **Jarque-Bera (JB)**: 4.595
+- **Prob(JB)**: 0.101
+- **Skew**: 0.397
+- **Kurtosis**: 2.405
+- **Durbin-Watson**: 3.521
+- **Cond. No.**: 10.3
+
+- Standard Errors are heteroscedasticity robust (HC3)
+
+# Appendix E
+
+## Statistical Analysis Summary
+
+### Variance Inflation Factor (VIF) for Sales Tax Model
+
+The Variance Inflation Factor (VIF) assesses the level of multicollinearity in the regression model. High VIF values indicate high correlation among predictors.
+
+| Feature             | VIF        |
+|---------------------|------------|
+| **const**           | 3.555556   |
+| **NBA_Team**        | 1.066667   |
+| **Post_2016**       | 3.333333   |
+| **Interaction_2016**| 3.400000   |
+
+### Shapiro-Wilk Test for Normality (Sales Tax)
+
+The Shapiro-Wilk test checks for the normality of residuals. A significant p-value indicates deviation from normality.
+
+- **P-value**: 8.707994336210438e-12
+
+### Breusch-Pagan Test for Heteroscedasticity (Sales Tax)
+
+The Breusch-Pagan test detects heteroscedasticity in the residuals. A significant p-value suggests heteroscedasticity.
+
+- **P-value**: 0.8069783340990326
+
+### Durbin-Watson Test for Autocorrelation (Sales Tax)
+
+The Durbin-Watson test assesses autocorrelation in residuals. A value close to 2 indicates no autocorrelation.
+
+- **Statistic**: 1.616710947262373
+
+### Variance Inflation Factor (VIF) for Wage Tax Model
+
+| Feature             | VIF        |
+|---------------------|------------|
+| **const**           | 1.866667   |
+| **NBA_Team**        | 1.066667   |
+| **Post_2016**       | 1.750000   |
+| **Interaction_2016**| 1.816667   |
+
+### Shapiro-Wilk Test for Normality (Wage Tax)
+
+- **P-value**: 4.7424334482835796e-05
+
+### Breusch-Pagan Test for Heteroscedasticity (Wage Tax)
+
+- **P-value**: 1.360648281658858e-10
+
+### Durbin-Watson Test for Autocorrelation (Wage Tax)
+
+- **Statistic**: 3.521249469443095
+
+### Bootstrap Analysis
+
+Bootstrap sampling was used to estimate the confidence intervals for residuals in both models.
+
+#### Sales Tax Residuals
+
+- **Bootstrap Samples Shape**: (10000, 160)
+
+#### Wage Tax Residuals
+
+- **Bootstrap Samples Shape**: (10000, 112)
+
+### 95% Confidence Interval for Sales Tax Residuals
+
+**Lower Bound:**
+
+\[ -0.0003552, -0.0003552, -0.00036186, \ldots, -0.00036186 \]
+
+**Upper Bound:**
+
+\[ 0.00083068, 0.00080083, 0.00080083, \ldots, 0.00080083 \]
+
+### 95% Confidence Interval for Wage Tax Residuals
+
+**Lower Bound:**
+
+\[ -0.00069225, -0.00069225, -0.00069225, \ldots, -0.00069225 \]
+
+**Upper Bound:**
+
+\[ 0.00098265, 0.00098265, 0.00097161, \ldots, 0.00097161 \]
+
+### Hypothesis Testing for Residuals
+
+#### Sales Tax Residuals
+
+- **P-values**: \[ 0.99830939, 0.99460757, 0.9912871, \ldots, 0.99634471 \]
+
+#### Wage Tax Residuals
+
+- **P-values**: \[ 0.99780196, 0.99283902, 0.9969469, \ldots, 0.99603404 \]
+
+### Post-Bootstrapping Tests
+
+**Variance Inflation Factor (VIF) for Sales Tax Model:**
+
+| Feature             | VIF        |
+|---------------------|------------|
+| **const**           | 3.555556   |
+| **NBA_Team**        | 1.066667   |
+| **Post_2016**       | 3.333333   |
+| **Interaction_2016**| 3.400000   |
+
+**Shapiro-Wilk Test for Normality (Sales Tax):**
+
+- **P-value**: 8.707994336210438e-12
+
+**Breusch-Pagan Test for Heteroscedasticity (Sales Tax):**
+
+- **P-value**: 0.8069783340990326
+
+**Durbin-Watson Test for Autocorrelation (Sales Tax):**
+
+- **Statistic**: 1.616710947262373
+
+**Variance Inflation Factor (VIF) for Wage Tax Model:**
+
+| Feature             | VIF        |
+|---------------------|------------|
+| **const**           | 1.866667   |
+| **NBA_Team**        | 1.066667   |
+| **Post_2016**       | 1.750000   |
+| **Interaction_2016**| 1.816667   |
+
+**Shapiro-Wilk Test for Normality (Wage Tax):**
+
+- **P-value**: 4.7424334482835796e-05
+
+**Breusch-Pagan Test for Heteroscedasticity (Wage Tax):**
+
+- **P-value**: 1.360648281658858e-10
+
+**Durbin-Watson Test for Autocorrelation (Wage Tax):**
+
+- **Statistic**: 3.521249469443095
