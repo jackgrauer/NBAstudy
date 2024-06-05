@@ -134,7 +134,7 @@ The sales tax model associated the presence of an NBA team with a statistically,
 Results further indicated no significant change in tax revenues before and after the 2016 media deal. The coefficients of the interaction terms in both models ranged from -0.0002 to 0.0002, with p-values over 0.667. Interaction terms in both sales tax and wage tax analyses did not show significant effects post-2016 media deal (coefficients: -6.874e-05 and -0.0002, p-values: 0.823 and 0.712).
 
 ## Post-regression Diagnostics
-Post-regression diagnostic tests suggested statistical issues with the models, which we could not resolve. P-values and other relevant statistics are available in Appendix _.
+Post-regression diagnostic tests suggested statistical issues with the models, which we could not resolve. P-values and other relevant statistics are available in the Appendix.
 
 Using stationary bootstrapping, we generated 10,000 samples to re-test the wage and sales tax models’ hypotheses at 95% confidence intervals. The sales tax model 95% confidence intervals ranged from -0.00036186 to 0.00083068. For wage tax residuals, they ranged from -0.00069225 to 0.00098265. These results further validated the models’ fits, showing the probability of observing the residuals under the null hypothesis.
 
