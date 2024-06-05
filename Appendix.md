@@ -52,40 +52,87 @@
 | 2021  | $541,598,000        | $1,450,745,000    | $209,740,000   |
 | 2022  | $749,865,000        | $1,653,878,000    | $277,690,000   |
 
-## Slope Trends and Statistical Tests
+# Appendix C
 
-**Slope of Sales Tax Trend:**
+## Tax Policy and City Characteristics
 
-- NBA cities: -4.026925068526744e-05
-- Non-NBA cities: -2.0936099088053373e-05
+This section provides an overview of tax policies and characteristics of various cities. It indicates whether the city has NBA revenue, wage tax, and sales tax. These values defined whether each given city was either designated as a control group or a treatment group in each model, or excluded.
 
-**T-test for Parallel Trends (Sales Tax):**
+| City  | has_NBArev | has_wagetax | has_salestax |
+|-------|------------|-------------|--------------|
+| PHL   | 1          | 1           | 1            |
+| CLE   | 1          | 1           | 0            |
+| DET   | 1          | 1           | 1            |
+| STL   | 0          | 1           | 0            |
+| PIT   | 0          | 1           | 0            |
+| CIN   | 0          | 1           | 0            |
+| BAL   | 0          | 1           | 0            |
+| MIA   | 1          | 0           | 1            |
+| MEM   | 1          | 0           | 0            |
+| DAL   | 1          | 0           | 0            |
+| HOU   | 1          | 0           | 1            |
+| SAC   | 1          | 0           | 1            |
+| MKE   | 1          | 0           | 0            |
+| TOR   | 1          | 0           | 0            |
+| SPO   | 0          | 0           | 1            |
+| TAC   | 0          | 0           | 1            |
+| DEN   | 1          | 0           | 1            |
+| BTR   | 0          | 0           | 1            |
 
-- T-statistic: -15.411849395399376
-- P-value: 1.364958997896191e-14
-- Degrees of freedom: 26.0
+## Appendix D: Parallel Trends Assumption Tests
 
-**Slope Difference (Sales Tax):**
+### Sales Tax Trends
 
-- Difference: -1.933315159721407e-05
-- T-statistic: -0.9281909617845188
-- P-value: 0.3533085219378411
+We analyzed the slope trends of sales tax for cities with and without NBA teams. The negative slope indicates a general decrease in sales tax revenue over time for both groups of cities.
 
-**Slope of Wage Tax Trend:**
+- **Slope of Sales Tax Trend:**
+  - NBA cities: -4.026925068526744e-05
+  - Non-NBA cities: -2.0936099088053373e-05
 
-- NBA cities: -6.61648190158625e-06
-- Non-NBA cities: 7.384962966335062e-05
+To determine if the trends in sales tax revenue for NBA and non-NBA cities are parallel, a t-test was conducted.
 
-**T-test for Parallel Trends (Wage Tax):**
+- **T-test for Parallel Trends (Sales Tax):**
+  - T-statistic: -15.411849395399376
+  - P-value: 1.364958997896191e-14
+  - Degrees of freedom: 26.0
 
-- T-statistic: -42.86788390451699
-- P-value: 1.183069977160952e-25
-- Degrees of freedom: 26.0
+The significant p-value indicates that the difference in slopes between NBA and non-NBA cities is statistically significant.
 
-**Slope Difference (Wage Tax):**
+### Wage Tax Trends
 
-- Difference: -8.046611156493688e-05
-- T-statistic: -0.9281909617845228
-- P-value: 0.35330852193783935
+Similarly, the wage tax trends were analyzed. The slopes for NBA and non-NBA cities show different trends, with non-NBA cities having a positive slope, indicating an increase in wage tax revenue over time.
 
-</small>
+- **Slope of Wage Tax Trend:**
+  - NBA cities: -6.61648190158625e-06
+  - Non-NBA cities: 7.384962966335062e-05
+
+A t-test was also conducted to compare the wage tax trends between NBA and non-NBA cities.
+
+- **T-test for Parallel Trends (Wage Tax):**
+  - T-statistic: -42.86788390451699
+  - P-value: 1.183069977160952e-25
+  - Degrees of freedom: 26.0
+
+The significant p-value suggests a substantial difference in wage tax trends of NBA and non-NBA cities.
+
+### Analysis of Slope Differences
+
+The analysis further explored the differences in slopes for sales and wage taxes.
+
+#### Sales Tax Slope Difference
+
+- **Slope Difference (Sales Tax):**
+  - Difference: -1.933315159721407e-05
+  - T-statistic: -0.9281909617845188
+  - P-value: 0.3533085219378411
+
+The non-significant p-value indicates that the difference in the decline rates of sales tax revenue between NBA and non-NBA cities is not statistically significant.
+
+#### Wage Tax Slope Difference
+
+- **Slope Difference (Wage Tax):**
+  - Difference: -8.046611156493688e-05
+  - T-statistic: -0.9281909617845228
+  - P-value: 0.35330852193783935
+
+Similarly, the difference in wage tax revenue trends between the two groups is not statistically significant.
