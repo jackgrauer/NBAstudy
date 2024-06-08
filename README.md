@@ -2,7 +2,7 @@
 
 ## Abstract: This study tested the relationship between NBA revenue fluctuations and tax revenue collections in mid-sized cites that host NBA teams. Results indicated NBA revenue gains did not significantly impact tax revenue influx in observed cities like Philadelphia.
 
-Developers associated with the Philadelphia 76ers want to build a new basketball arena near the city’s downtown Chinatown. City Council has yet to definitively block or approve the project but will likely make a final decision sometime in 2024.
+Developers associated with the Philadelphia 76ers want to build a new basketball arena near the city’s downtown Chinatown. At the time of this writing, City Council haad yet to definitively block or approve the project but will likely make a final decision sometime in 2024.
 
 The proposed new arena would border the major cultural center of Chinatown to the north. Some stakeholders argue that a new basketball arena in the area would cannibalize restaurant revenue—a central industry in the neighborhood—and increase the cost of living, putting additional pressure on residents. To the proposed stadium’s south, workers at a major hospital and a fire station would be forced to compete with sports fans for traffic infrastructure and road space (Hunt).
 
