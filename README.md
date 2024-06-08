@@ -16,6 +16,8 @@ Prior research has shown that a media distribution deal between the NBA and Turn
 
 The exploratory stage of the test made a case study of Philadelphia. A second and more rigorously controlled and calculated survey expanded the test across 17 cities with and without sales and wage tax systems, and that do and do not host NBA teams. The main study produced results consistent with the Philadelphia findings: the large and sudden influx of revenue to the NBA in 2016 did not correlate to noticeable increases in municipal government sales or wage tax revenues.
 
+(Insert Figures 1 + 2)
+
 Based on the 76ers' financial performance provided in this study, specifically during the period between 2001 and 2022, the tradition of overestimating the financial benefits professional basketball provides Philadelphia dates back to at least the 1980s. Economist Edward Shils was hired to assess the economic benefits the 76ers provided for Philadelphia found the 76ers generated about $6.9 million a year in annual tax revenue for Philadelphia in the 1980s. Economists have since used Shils’ work as a teachable example of techniques frequently employed with the intention to overestimate the economic impacts of such development projects (Cromley, Baade).
 
 Philadelphia’s Commerce Department estimated the Spectrum contributed $6.2 million in tax revenue and generated $8.8 million for the City in a newly constructed 76ers venue (Shropshire and Kelly, p. 21). City Council rapidly approved the construction of Spectrum II, now known as the Wells Fargo Center, after the 76ers threatened to leave the City in 1991. When the private financing negotiations behind the new construction project stumbled, an Inquirer op-ed expanded the promised municipal tax revenue figure to $12 million (Macnow, Daughen, Anonymous).
@@ -71,9 +73,11 @@ Data pre-processing consisted of five steps. To create control and treatment gro
 
 To control for COVID-19’s effects, we smoothed financial data from 2020 and 2021 by averaging those values with unaffected values from neighboring years. To control for inflation, we converted financial data from all years to 2020 values with adjustment factors based on the Consumer Price Index (CPI). To control for population differences by city and by year, we normalized financial data on an annual, per capita basis.
 
+(Insert Figure 3)
+
 To justify the use of a difference-in-difference (DID) analysis, we needed to test for parallel trends between aggregated wage and sales tax revenue prior to 2016. We ran a preliminary Ordinary Least Squares (OLS) regression to find lines of best fit for those variables. We then calculated and compared the slopes of those lines.
 
-Diagnostics on the preliminary OLS regression also guided model selection. Heteroscedasticity and non-normality warnings, common in panel data analyses, informed our decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors.
+Diagnostics on the preliminary regression also guided model selection. Heteroscedasticity and non-normality warnings, common in panel data analyses, informed our decision to use a Weighted Least Squares (WLS) regression with robust (HC3) standard errors.
 
 We set up a multivariate regression that ran two models. The first assessed the 2016 media deal’s impact on sales tax revenue. The second did the same for wage tax revenue. For each of these two models, cities were divided into groups based on the presence or absence of an NBA team and the presence or absence of wage and sales systems. The equations are represented here:
 
@@ -126,6 +130,8 @@ Both the 76ers’ and Philadelphia’s revenues noticeably dipped during the COV
 This study’s main section expanded the scope to 17 cities between 2001 and 2022, featured a host of control measures, and introduced treatment and control groups in a setup designed to isolate the effect of the NBA’s 2016 financial performance on municipal tax revenues.
 
 The preliminary OLS regressions showed that sales and wage tax revenues shared similar slopes (p = .353) consistent between cities with and without NBA teams. This provided proof of parallel trends in these variables prior to the intervention: a necessary pre-requisite for a multivariate DID analysis using a WLS model.
+
+(Insert Figures 4 + 5)
 
 The sales tax model accounted for 47.8% of observed variance (R² = 0.478), and the wage tax model accounted for 42.3%. These are acceptable values for social science purposes, given the presence of statistically significant explanatory variables (Ozili, p.10).
 
