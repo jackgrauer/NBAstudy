@@ -20,6 +20,10 @@ from linearmodels.panel import PanelOLS
 import warnings
 import patsy
 import pingouin as pg
+from scipy.stats import ttest_ind, norm
+
+
+
 
 # PHILADELPHIA EXPLORATORY ANALYSIS #################################
 
@@ -120,7 +124,28 @@ for index, row in df.iterrows():
         int(row['PHL_Sales_and_Use'])
     ))
 
+# Step 5: Visualization of tax contributions and revenues
+fig, ax = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
 
+# Plot Philadelphia tax revenues
+ax[0].plot(df['Year'], df['PHL_Business_Priv'], label='Business Privilege', marker='o')
+ax[0].plot(df['Year'], df['PHL_Wage_and_Earnings'], label='Wage and Earnings', marker='o')
+ax[0].plot(df['Year'], df['PHL_Sales_and_Use'], label='Sales and Use', marker='o')
+ax[0].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
+ax[0].set_title('Figure 1: Philadelphia Tax Revenues by Year')
+ax[0].set_ylabel('Revenue in billions ($)')
+ax[0].legend()
+
+# Plot 76ers tax contributions
+ax[1].plot(df['Year'], df['76ers_Total_Revenue_Per_Year'], label='Total 76ers Tax Contributions', color='green', marker='o')
+ax[1].axvline(x=2016, color='red', linestyle='--', label='2016 Intervention')
+ax[1].set_title('Figure 2: 76ers Tax Contributions by Year')
+ax[1].set_xlabel('Year')
+ax[1].set_ylabel('Contributions in millions ($)')
+ax[1].legend()
+
+plt.tight_layout()
+plt.show()
 
 # Multi City Study ##############################################################
 
@@ -431,6 +456,49 @@ for i in range(len(years)):
     sales_tax_agg.append(sales_tax_total)
     wage_tax_agg.append(wage_tax_total)
 
+# Create a plot
+plt.figure(figsize=(14, 8))
+
+# Plot aggregated NBA revenue
+plt.plot(years, nba_rev_agg, marker='o', label='Aggregated NBA Revenue')
+
+# Plot aggregated sales tax
+plt.plot(years, sales_tax_agg, marker='s', label='Aggregated Sales Tax')
+
+# Plot aggregated wage tax
+plt.plot(years, wage_tax_agg, marker='^', label='Aggregated Wage Tax')
+
+# Highlight the intervention year 2016
+plt.axvline(x=2016, color='r', linestyle='--', label='2016 Media Deal')
+
+# Adding title and labels
+plt.title('Figure 3: Aggregated NBA Revenue, Sales Tax, and Wage Tax for Selected Cities (2001-2022)')
+plt.xlabel('Year')
+plt.ylabel('Amount in millions ($)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+# Step 16: Parallel Trends Tests for Sales and Wage Tax
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from scipy.stats import ttest_ind, norm
+
+# Assuming `data` and `years` are already defined and populated
+
+# Function to aggregate data for specified cities and years
+def aggregate_data(cities, years, key):
+    aggregated_values = []
+    for year in years:
+        total = sum(
+            data['Cities'][city][key][years.index(year)]
+            for city in cities if data['Cities'][city][key][years.index(year)] is not None
+        )
+        aggregated_values.append(total)
+    return aggregated_values
+
 # Step 16: Parallel Trends for Sales Tax
 
 # Years for analysis
@@ -440,46 +508,101 @@ years_analysis = [year for year in years if 2001 <= year <= 2014]
 cities_with_nba_sales_tax = ['PHL', 'DET', 'MIA', 'SAC', 'HOU', 'DEN']
 cities_without_nba_sales_tax = ['SPO', 'TAC', 'BTR']
 
-# Initialize lists for aggregated values
-sales_tax_nba, sales_tax_non_nba = [], []
+# Aggregate sales tax data
+sales_tax_with_nba = aggregate_data(cities_with_nba_sales_tax, years_analysis, 'salestax')
+sales_tax_without_nba = aggregate_data(cities_without_nba_sales_tax, years_analysis, 'salestax')
 
-# Aggregate values for each year
-for year in years_analysis:
-    # Sales Tax
-    sales_tax_nba_total = sum(
-        data['Cities'][city]['salestax'][years.index(year)]
-        for city in cities_with_nba_sales_tax if data['Cities'][city]['salestax'][years.index(year)] is not None
-    )
-    sales_tax_non_nba_total = sum(
-        data['Cities'][city]['salestax'][years.index(year)]
-        for city in cities_without_nba_sales_tax if data['Cities'][city]['salestax'][years.index(year)] is not None
-    )
-    sales_tax_nba.append(sales_tax_nba_total)
-    sales_tax_non_nba.append(sales_tax_non_nba_total)
-
-
-# Fit linear regression models to the sales tax data
-X_years_analysis = np.array(years_analysis).reshape(-1, 1)
-model_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_nba)
-model_non_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_non_nba)
-
-# Predict sales tax using the fitted models
-sales_tax_nba_pred = model_nba_sales.predict(X_years_analysis)
-sales_tax_non_nba_pred = model_non_nba_sales.predict(X_years_analysis)
+# Create a plot for sales tax trends
+plt.figure(figsize=(14, 8))
+plt.plot(years_analysis, sales_tax_with_nba, marker='o', label='Sales Tax - NBA Cities')
+plt.plot(years_analysis, sales_tax_without_nba, marker='s', label='Sales Tax - Non-NBA Cities')
+plt.title('Figure 4: Parallel Trends: Sales Tax in Cities With and Without NBA Teams (2001-2014)')
+plt.xlabel('Year')
+plt.ylabel('')
+plt.legend()
+plt.grid(True)
+plt.show()
 
 # Calculate and print the slopes
-slope_sales_nba = model_nba_sales.coef_[0]
-slope_sales_non_nba = model_non_nba_sales.coef_[0]
-print(f"Slope of sales tax trend for NBA cities: {slope_sales_nba}")
-print(f"Slope of sales tax trend for non-NBA cities: {slope_sales_non_nba}")
+X_years_analysis = np.array(years_analysis).reshape(-1, 1)
+model_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_with_nba)
+model_non_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_without_nba)
+
+slope_sales_with_nba = model_nba_sales.coef_[0]
+slope_sales_without_nba = model_non_nba_sales.coef_[0]
+print(f"Slope of sales tax trend for NBA cities: {slope_sales_with_nba}")
+print(f"Slope of sales tax trend for non-NBA cities: {slope_sales_without_nba}")
+
+# Convert lists to numpy arrays
+sales_tax_with_nba = np.array(sales_tax_with_nba)
+sales_tax_without_nba = np.array(sales_tax_without_nba)
 
 # Statistical test for parallel trends (Sales Tax)
-ttest_sales_result = ttest_ind(sales_tax_nba_pred, sales_tax_non_nba_pred)
+ttest_sales_result = ttest_ind(sales_tax_with_nba, sales_tax_without_nba)
 print(f"T-test result for parallel trends (Sales Tax): {ttest_sales_result}")
 
 # Perform statistical validation for parallel trends using the slopes (Sales Tax)
-slope_sales_diff = slope_sales_nba - slope_sales_non_nba
-slope_sales_diff_std = np.std(sales_tax_nba_pred - sales_tax_non_nba_pred) / np.sqrt(len(years_analysis))
+slope_sales_diff = slope_sales_with_nba - slope_sales_without_nba
+slope_sales_diff_std = np.std(sales_tax_with_nba - sales_tax_without_nba) / np.sqrt(len(years_analysis))
+t_statistic_sales = slope_sales_diff / slope_sales_diff_std
+p_value_sales = 2 * (1 - norm.cdf(abs(t_statistic_sales)))
+print(f"Slope difference (Sales Tax): {slope_sales_diff}")
+print(f"T-statistic (Sales Tax): {t_statistic_sales}")
+print(f"P-value (Sales Tax): {p_value_sales}")
+
+# Step 16.5: Parallel Trends for Wage Tax
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from scipy.stats import ttest_ind, norm
+
+# Assuming `data` and `years` are already defined and populated
+
+# Function to aggregate data for specified cities and years
+def aggregate_data(cities, years, key):
+    aggregated_values = []
+    for year in years:
+        total = sum(
+            data['Cities'][city][key][years.index(year)]
+            for city in cities if data['Cities'][city][key][years.index(year)] is not None
+        )
+        aggregated_values.append(total)
+    return aggregated_values
+
+# Step 16: Parallel Trends for Sales Tax
+
+# Years for analysis
+years_analysis = [year for year in years if 2001 <= year <= 2014]
+
+# Cities with and without NBA team and a sales tax
+cities_with_nba_sales_tax = ['PHL', 'DET', 'MIA', 'SAC', 'HOU', 'DEN']
+cities_without_nba_sales_tax = ['SPO', 'TAC', 'BTR']
+
+# Aggregate sales tax data
+sales_tax_with_nba = aggregate_data(cities_with_nba_sales_tax, years_analysis, 'salestax')
+sales_tax_without_nba = aggregate_data(cities_without_nba_sales_tax, years_analysis, 'salestax')
+
+# Calculate and print the slopes
+X_years_analysis = np.array(years_analysis).reshape(-1, 1)
+model_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_with_nba)
+model_non_nba_sales = LinearRegression().fit(X_years_analysis, sales_tax_without_nba)
+
+slope_sales_with_nba = model_nba_sales.coef_[0]
+slope_sales_without_nba = model_non_nba_sales.coef_[0]
+print(f"Slope of sales tax trend for NBA cities: {slope_sales_with_nba}")
+print(f"Slope of sales tax trend for non-NBA cities: {slope_sales_without_nba}")
+
+# Convert lists to numpy arrays
+sales_tax_with_nba = np.array(sales_tax_with_nba)
+sales_tax_without_nba = np.array(sales_tax_without_nba)
+
+# Statistical test for parallel trends (Sales Tax)
+ttest_sales_result = ttest_ind(sales_tax_with_nba, sales_tax_without_nba)
+print(f"T-test result for parallel trends (Sales Tax): {ttest_sales_result}")
+
+# Perform statistical validation for parallel trends using the slopes (Sales Tax)
+slope_sales_diff = slope_sales_with_nba - slope_sales_without_nba
+slope_sales_diff_std = np.std(sales_tax_with_nba - sales_tax_without_nba) / np.sqrt(len(years_analysis))
 t_statistic_sales = slope_sales_diff / slope_sales_diff_std
 p_value_sales = 2 * (1 - norm.cdf(abs(t_statistic_sales)))
 print(f"Slope difference (Sales Tax): {slope_sales_diff}")
@@ -494,43 +617,41 @@ cities_with_nba_wage_tax = ['PHL', 'CLE', 'DET']
 # Cities with a wage tax and no NBA team
 cities_with_wage_no_nba = ['STL', 'PIT', 'CIN', 'BAL']
 
-# Initialize lists for aggregated values for wage tax
-wage_tax_with_nba, wage_tax_without_nba = [], []
+# Aggregate wage tax data
+wage_tax_with_nba = aggregate_data(cities_with_nba_wage_tax, years_analysis, 'wagetax')
+wage_tax_without_nba = aggregate_data(cities_with_wage_no_nba, years_analysis, 'wagetax')
 
-# Aggregate values for each year
-for year in years_analysis:
-    wage_tax_with_nba_total = sum(
-        data['Cities'][city]['wagetax'][years.index(year)]
-        for city in cities_with_nba_wage_tax if data['Cities'][city]['wagetax'][years.index(year)] is not None
-    )
-    wage_tax_without_nba_total = sum(
-        data['Cities'][city]['wagetax'][years.index(year)]
-        for city in cities_with_wage_no_nba if data['Cities'][city]['wagetax'][years.index(year)] is not None
-    )
-    wage_tax_with_nba.append(wage_tax_with_nba_total)
-    wage_tax_without_nba.append(wage_tax_without_nba_total)
+# Create a plot for wage tax trends
+plt.figure(figsize=(14, 8))
+plt.plot(years_analysis, wage_tax_with_nba, marker='o', label='Wage Tax - NBA Cities')
+plt.plot(years_analysis, wage_tax_without_nba, marker='s', label='Wage Tax - Non-NBA Cities')
+plt.title('Figure 5: Parallel Trends: Wage Tax in Cities With and Without NBA Teams (2001-2014)')
+plt.xlabel('Year')
+plt.ylabel('')
+plt.legend()
+plt.grid(True)
+plt.show()
 
-# Fit linear regression models to the wage tax data
+# Calculate and print the slopes
 model_with_nba_wage = LinearRegression().fit(X_years_analysis, wage_tax_with_nba)
 model_without_nba_wage = LinearRegression().fit(X_years_analysis, wage_tax_without_nba)
 
-# Predict wage tax using the fitted models
-wage_tax_with_nba_pred = model_with_nba_wage.predict(X_years_analysis)
-wage_tax_without_nba_pred = model_without_nba_wage.predict(X_years_analysis)
-
-# Calculate and print the slopes
 slope_wage_with_nba = model_with_nba_wage.coef_[0]
 slope_wage_without_nba = model_without_nba_wage.coef_[0]
-print(f"Slope of wage tax trend for cities with NBA team: {slope_wage_with_nba}")
-print(f"Slope of wage tax trend for cities without NBA team: {slope_wage_without_nba}")
+print(f"Slope of wage tax trend for NBA cities: {slope_wage_with_nba}")
+print(f"Slope of wage tax trend for non-NBA cities: {slope_wage_without_nba}")
+
+# Convert lists to numpy arrays
+wage_tax_with_nba = np.array(wage_tax_with_nba)
+wage_tax_without_nba = np.array(wage_tax_without_nba)
 
 # Statistical test for parallel trends (Wage Tax)
-ttest_wage_result = ttest_ind(wage_tax_with_nba_pred, wage_tax_without_nba_pred)
+ttest_wage_result = ttest_ind(wage_tax_with_nba, wage_tax_without_nba)
 print(f"T-test result for parallel trends (Wage Tax): {ttest_wage_result}")
 
 # Perform statistical validation for parallel trends using the slopes (Wage Tax)
 slope_wage_diff = slope_wage_with_nba - slope_wage_without_nba
-slope_wage_diff_std = np.std(wage_tax_with_nba_pred - wage_tax_without_nba_pred) / np.sqrt(len(years_analysis))
+slope_wage_diff_std = np.std(wage_tax_with_nba - wage_tax_without_nba) / np.sqrt(len(years_analysis))
 t_statistic_wage = slope_wage_diff / slope_wage_diff_std
 p_value_wage = 2 * (1 - norm.cdf(abs(t_statistic_wage)))
 print(f"Slope difference (Wage Tax): {slope_wage_diff}")
@@ -591,6 +712,12 @@ wage_tax_model_wls = sm.WLS(y_wage, X_wage, weights=weights_wage).fit(cov_type='
 
 print("Wage Tax Model Summary with WLS and 2016 Intervention Year")
 print(wage_tax_model_wls.summary())
+
+
+
+
+
+
 
 # Step 18: Diagnostics. Multicollinearity, Normality, Autorrelation and Heteroscedasticity Check for Both Models
 
