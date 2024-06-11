@@ -23,9 +23,10 @@ import pingouin as pg
 from scipy.stats import ttest_ind, norm
 
 
-
+'''
 
 # PHILADELPHIA EXPLORATORY ANALYSIS #################################
+# This part of the study works as expected, so don't worry about it.
 
 # Step 1: Initialize DataFrame with provided data
 df = pd.DataFrame({
@@ -146,6 +147,8 @@ ax[1].legend()
 
 plt.tight_layout()
 plt.show()
+
+'''
 
 # Multi City Study ##############################################################
 
